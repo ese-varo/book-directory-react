@@ -6,11 +6,11 @@ const Home = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    UserService.getPublicContent().then(
-      (response) => {
+    (async () => {
+      try {
+        const response = await UserService.getPublicContent();
         setContent(response.data);
-      },
-      (error) => {
+      } catch(error) {
         const _content =
           (error.response && error.response.data) ||
           error.message ||
@@ -18,9 +18,10 @@ const Home = () => {
 
         setContent(_content);
       }
-    );
+    })();
   }, []);
 
+  if(!content) return <p>loading...</p>;
   return (
     <div className="container">
       <header className="jumbotron">

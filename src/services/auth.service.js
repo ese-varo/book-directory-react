@@ -30,7 +30,12 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
+  console.log(JSON.parse(localStorage.getItem('user')));
   return JSON.parse(localStorage.getItem('user'));
+};
+
+const getCurrentUserId = () => {
+  return getCurrentUser().id;
 };
 
 export default {
@@ -38,4 +43,5 @@ export default {
   login,
   logout,
   getCurrentUser,
+  getCurrentUserId,
 };

@@ -7,8 +7,8 @@ const getPublicContent = () => {
   return axios.get(API_URL + 'all');
 };
 
-const getUserBookDirectory = () => {
-  return axios.get(API_URL + 'directory', { headers: authHeader() });
+const getUserBookDirectory = (userId) => {
+  return axios.get(API_URL + `books/user/${userId}`, { headers: authHeader() });
 };
 
 export default {
